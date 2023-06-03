@@ -5,7 +5,7 @@ const { isValidId } = require("../../middlewares");
 
 const router = express.Router();
 
-router.get("/", ctrlWrapper(ctrl.getAllShops));
+router.get("/", ctrlWrapper(ctrl.getShopList));
 
 router.get("/:shopId", isValidId, ctrlWrapper(ctrl.getProductsByShopId));
 
