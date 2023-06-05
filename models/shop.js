@@ -8,4 +8,4 @@ const shopSchema = Schema({
 
 const Shop = model("shop", shopSchema);
 
-module.exports = Shop;
+module.exports = { Shop };
