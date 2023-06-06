@@ -2,6 +2,12 @@ const { Schema, model } = require("mongoose");
 const Joi = require("joi");
 
 const cartShema = Schema({
+  shop: {
+    type: String,
+  },
+  _id: {
+    type: String,
+  },
   name: {
     type: String,
   },
@@ -9,7 +15,7 @@ const cartShema = Schema({
     type: String,
   },
   qty: {
-    type: String,
+    type: Number,
   },
   price: {
     type: Number,
@@ -26,7 +32,7 @@ const orderSchema = Schema({
   sum: {
     type: Number,
   },
-  user: {
+  userData: {
     name: {
       type: String,
     },
@@ -43,9 +49,11 @@ const orderSchema = Schema({
 });
 
 const cart = Joi.object({
+  shop: Joi.string().required(),
+  _id: Joi.string().required(),
   name: Joi.string().required(),
   img: Joi.string().required(),
-  qty: Joi.string().required(),
+  qty: Joi.number().required(),
   price: Joi.number().required(),
   totalPrice: Joi.number().required(),
 });
@@ -53,7 +61,7 @@ const cart = Joi.object({
 const addOrder = Joi.object({
   cart: Joi.array().items(cart).required(),
   sum: Joi.number().required(),
-  user: Joi.object({
+  userData: Joi.object({
     name: Joi.string().required(),
     email: Joi.string().email().required(),
     phone: Joi.string().required(),
